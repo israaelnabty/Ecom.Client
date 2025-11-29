@@ -49,6 +49,13 @@ export class AuthService {
     );
   }
 
+  // --- NEW METHOD FOR EXTERNAL LOGIN ---
+  // Called by the Callback Component to finalize the login
+  setExternalSession(token: string, user: User) {
+    this.setSession({ token, user, tokenExpiration: '' }); // Expiration handling optional here
+    this.snackBar.open(`Welcome back, ${user.displayName}!`, 'Close', { duration: 3000 });
+  }
+
   register(formData: FormData): Observable<boolean> {
     return this.apiService.post<AuthResponse>('api/account/register', formData).pipe(
       tap((response) => {

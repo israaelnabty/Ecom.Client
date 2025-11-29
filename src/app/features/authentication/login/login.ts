@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth-service';
 
 import { MaterialModule } from '../../../shared/material/material-module';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -60,6 +61,15 @@ export class Login {
         this.isLoading.set(false);
       }
     });
+  }
+
+  loginWithGoogle() {
+    // The URL we want the backend to return us to after Google is done
+    // Note: This must match the route we created in Step 3
+    const returnUrl = `${window.location.origin}/account/callback`;
+
+    // Redirect the browser to the .NET Backend endpoint
+    window.location.href = `${environment.apiURL}/api/account/external-login?provider=Google&returnUrl=${returnUrl}`;
   }
 
 }
