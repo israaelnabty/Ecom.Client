@@ -1,1 +1,92 @@
-<p>profile-component works!</p>
+<div class="container mx-auto p-4 md:p-8 max-w-3xl">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">My Profile</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Left Column: Profile Picture Card -->
+        <mat-card class="col-span-1 p-6 flex flex-col items-center text-center h-fit">
+            <div class="relative w-32 h-32 mb-4">
+                <img [src]="currentImage()" 
+                 (error)="handleImageError($event)"
+                 class="w-full h-full rounded-full object-cover border-4 border-gray-100 shadow-sm"
+                 alt="Profile Picture">
+
+                <!-- Edit Icon Overlay -->
+                <button (click)="fileInput.click()"
+                    class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full shadow-md hover:bg-blue-700 transition">
+                    <mat-icon class="text-sm">edit</mat-icon>
+                </button>
+                <input #fileInput type="file" (change)="onFileSelected($event)" class="hidden" accept="image/*">
+            </div>
+
+            <h2 class="text-xl font-semibold">{{ authService.currentUser()?.displayName }}</h2>
+            <p class="text-gray-500 text-sm">{{ authService.currentUser()?.email }}</p>
+
+            <div class="mt-4 w-full">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+                    Customer
+                </span>
+            </div>
+        </mat-card>
+
+        <!-- Right Column: Edit Details Form -->
+        <mat-card class="col-span-1 md:col-span-2 p-6">
+            <mat-card-header class="mb-4">
+                <mat-card-title>Account Details</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+
+                    <!-- Email (Read Only) -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email Address</mat-label>
+                        <input matInput formControlName="email" readonly class="text-gray-500">
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <mat-hint>Email cannot be changed</mat-hint>
+                    </mat-form-field>
+
+                    <!-- Display Name -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Display Name</mat-label>
+                        <input matInput formControlName="displayName">
+                        <mat-icon matSuffix>person</mat-icon>
+                        @if (profileForm.get('displayName')?.hasError('required')) {
+                        <mat-error>Name is required</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <!-- Phone Number -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phoneNumber" placeholder="+1 234 567 890">
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+
+                    <!-- Preview Selected File Name -->
+                    @if (selectedFile) {
+                    <div class="bg-blue-50 text-blue-700 p-3 rounded-md text-sm flex items-center gap-2">
+                        <mat-icon>image</mat-icon>
+                        <span>New image selected: {{ selectedFile.name }}</span>
+                    </div>
+                    }
+
+                    <div class="flex justify-end mt-4">
+                        <button mat-flat-button color="primary" type="submit"
+                            [disabled]="profileForm.invalid || isLoading() || profileForm.pristine && !selectedFile"
+                            class="px-8 py-2">
+                            @if (isLoading()) {
+                            <mat-spinner diameter="20" class="mr-2 inline-block"></mat-spinner>
+                            Saving...
+                            } @else {
+                            Save Changes
+                            }
+                        </button>
+                    </div>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+</div>

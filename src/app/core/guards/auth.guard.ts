@@ -13,7 +13,15 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
-  // Not authenticated
+  // 2. Fallback: Check if we have a token in storage (Optimistic check)
+  // This fixes the page-refresh race condition. If a token exists, we assume
+  // the user is logged in while the AuthService fetches the profile in the background.
+  const token = localStorage.getItem('token');
+  if (token) {
+    return true;
+  }
+
+  // 3. Not authenticated
   snackBar.open('You must be logged in to access this page', 'Close', { duration: 3000 });
   
   // Redirect to login, passing the return URL so we can go back after login
