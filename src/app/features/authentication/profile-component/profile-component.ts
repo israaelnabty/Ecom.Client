@@ -51,14 +51,16 @@ export class ProfileComponent {
 
         // Handle Image URL (Assuming backend returns full URL or relative path)
         // If relative, prepend API URL here or in a pipe
-        if (user.profileImageUrl) {
-           const fullUrl = `${environment.apiURL}/Files/Images/UserImages/${user.profileImageUrl}`;
-           this.currentImage.set(fullUrl);
-        }
-        else {
-          //this.currentImage.set(undefined);
-          this.currentImage.set(`${environment.apiURL}/Files/Images/UserImages/default-profile.png`);
-        }
+        this.currentImage.set(user.profileImageUrl);
+        
+        // if (user.profileImageUrl) {
+        //    const fullUrl = `${environment.apiURL}/Files/Images/UserImages/${user.profileImageUrl}`;
+        //    this.currentImage.set(fullUrl);
+        // }
+        // else {
+        //   //this.currentImage.set(undefined);
+        //   this.currentImage.set(`${environment.apiURL}/Files/Images/UserImages/default-profile.png`);
+        // }
         
       }
     });

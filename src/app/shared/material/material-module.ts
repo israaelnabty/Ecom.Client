@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatMenuModule,
+    MatBadgeModule
   ],
   exports: [
     // Export so other modules can use them
@@ -50,7 +54,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatMenuModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule { }

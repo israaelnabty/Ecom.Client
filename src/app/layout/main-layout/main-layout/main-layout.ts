@@ -1,16 +1,29 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar';
-import { Footer } from '../footer/footer';
 
+import { CommonModule } from '@angular/common';
+
+// Choose one navbar to use:
+import { Navbar } from '../navbar/navbar';
+//import { TestNavbar } from '../../../shared/components/test-navbar/test-navbar';
+
+// Choose one footer to use:
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [NavbarComponent, Footer, RouterOutlet],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+
+    // Choose navbar
+    Navbar,
+    //TestNavbar,
+
+    // Choose footer
+    Footer,
+  ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
-export class MainLayout {
-
-}
-
+export class MainLayout {}

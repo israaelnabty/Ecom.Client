@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })
-export class NavbarComponent {
+export class Navbar {
   private authService = inject(AuthService);
   private cartService = inject(CartService);
   private wishlistService = inject(WishlistService);
