@@ -4,11 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // Choose one navbar to use:
-import { Navbar } from '../navbar/navbar';
+import { Navbar } from '../../../shared/components/navbar/navbar';
 //import { TestNavbar } from '../../../shared/components/test-navbar/test-navbar';
 
 // Choose one footer to use:
-import { Footer } from '../footer/footer';
+import { Footer } from '../../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-main-layout',

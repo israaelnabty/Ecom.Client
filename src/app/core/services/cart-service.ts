@@ -32,7 +32,7 @@ export class CartService {
 
   // Add a product to cart
   addToCart(productId: number, quantity = 1): Observable<CartItem> {
-    return this.api.post<CartItem>('cart/add', { productId, quantity }).pipe(
+    return this.api.post<CartItem>('api/Cart', { productId, quantity }).pipe(
       tap(item => {
         // Update signal locally
         const currentCart = this.cartSignal() ?? {
