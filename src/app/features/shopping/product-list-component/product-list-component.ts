@@ -280,7 +280,7 @@ loadProducts(): void {
   onAddToWishlist(product: Product): void {
     console.log('Add to wishlist:', product.id);
     // TODO: Implement wishlist service
-    this.wishlistService.addToWishlist(product.id).subscribe();
+    //this.wishlistService.addToWishlist(product.id).subscribe();
   }
 
   // Get page title based on current filters
