@@ -142,8 +142,10 @@ export class AuthService {
     // 2. Save JWT to LocalStorage (for the Interceptor to pick up)
     localStorage.setItem('token', authResponse.token);
 
+    const userWithRoles = this.getUserRolesFromToken(authResponse.token, processedUser);
+    
     // 3. Update Signal State
-    this.currentUserSignal.set(processedUser);
+    this.currentUserSignal.set(userWithRoles);
   }
 
   private loadCurrentUserFromStorage() {
@@ -183,6 +185,7 @@ export class AuthService {
       if (roleClaim) {
         // Ensure it's always an array (if single role, wrap it)
         user.roles = Array.isArray(roleClaim) ? roleClaim : [roleClaim];
+        console.log('User roles from token:', user.roles);
       } else {
         user.roles = [];
       }
