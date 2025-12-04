@@ -1,5 +1,5 @@
 
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../core/services/product-service';
 import { Product, ProductFilter, Category, Brand } from '../../../core/models/product.models';
@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
   brands: Brand[] = [];
   
   // Loading and error states
-  isLoading = false;
+  isLoading = signal<boolean>(false);
   error: string | null = null;
   
   // Pagination
@@ -116,13 +116,16 @@ export class ProductListComponent implements OnInit {
 //   }
 // }
 loadProducts(): void {
-
+  this.isLoading.set(true);
+  console.log('loading products', this.isLoading());
   // 1️⃣ Category has highest priority
   if (this.selectedCategoryId) {
     this.productService.getProductsByCategory(this.selectedCategoryId).subscribe({
       next: products => {
         this.products = products;
         this.totalProducts = products.length;
+        this.isLoading.set(false);
+        console.log('stop loading', this.isLoading());
       },
       error: console.error
     });
@@ -135,6 +138,8 @@ loadProducts(): void {
       next: products => {
         this.products = products;
         this.totalProducts = products.length;
+        this.isLoading.set(false);
+        console.log('stop loading', this.isLoading());
       },
       error: console.error
     });
@@ -146,8 +151,8 @@ loadProducts(): void {
       next: products => {
         this.products = products;
         this.totalProducts = products.length;
-        
-        
+        this.isLoading.set(false);
+        console.log('stop loading', this.isLoading());        
       },
       error: console.error
     });

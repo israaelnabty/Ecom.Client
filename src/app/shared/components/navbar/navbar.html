@@ -17,17 +17,6 @@
             class="px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 text-gray-700">
           Shop
         </a>
-        <a routerLink="/categories" routerLinkActive="!bg-blue-50 !text-blue-600 !font-semibold"
-            class="px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 text-gray-700">
-          Categories
-        </a>
-        <a routerLink="/deals" routerLinkActive="!bg-blue-50 !text-blue-600 !font-semibold"
-            class="px-4 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200 text-gray-700">
-          <span class="flex items-center gap-1">
-            Deals
-            <span class="text-xs bg-red-500 text-white px-1.5 py-0.5 rounded-full font-semibold">Hot</span>
-          </span>
-        </a>
       </div>
 
       <!-- Spacer -->
@@ -41,7 +30,7 @@
           <!-- Sliding Input -->
           <div
             class="absolute right-12 top-1/2 -translate-y-1/2 overflow-hidden transition-all duration-300 ease-in-out"
-            [class.w-64]="showSearch() && !isMobile()"
+            [class.w-80]="showSearch() && !isMobile()"
             [class.w-full]="showSearch() && isMobile()"
             [class.w-0]="!showSearch()"
             [class.opacity-100]="showSearch()"
