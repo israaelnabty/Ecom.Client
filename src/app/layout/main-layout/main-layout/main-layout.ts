@@ -9,20 +9,20 @@ import { Navbar } from '../../../shared/components/navbar/navbar';
 
 // Choose one footer to use:
 import { Footer } from '../../../shared/components/footer/footer';
+import { ChatbotComponent } from "../../../shared/components/chatbot/chatbot";
 
 @Component({
   selector: 'app-main-layout',
   imports: [
     RouterOutlet,
     CommonModule,
-
     // Choose navbar
     Navbar,
     //TestNavbar,
-
     // Choose footer
     Footer,
-  ],
+    ChatbotComponent
+],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
