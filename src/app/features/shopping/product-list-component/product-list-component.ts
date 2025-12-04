@@ -2,7 +2,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../core/services/product-service';
-import { Product, ProductFilter, Category, Brand } from '../../../core/models/Product.models';
+import { Product, ProductFilter, Category, Brand } from '../../../core/models/product.models';
 import { PageEvent } from '@angular/material/paginator';
 import { WishlistService } from '../../../core/services/wishlist-service';
 

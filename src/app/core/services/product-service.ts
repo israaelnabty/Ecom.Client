@@ -13,8 +13,7 @@ import {
   Category,
   Brand,
   ProductImageUrl
-} from '../models/Product.models';
-import { environment } from '../../../environments/environment';
+  } from '../models/product.models';
 
 // Helper interface for API response
 interface ApiResponse<T> {
