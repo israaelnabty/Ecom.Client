@@ -241,7 +241,7 @@ loadProducts(): void {
     this.currentFilter = { ...this.currentFilter, ...filter };
     this.currentPage = 0;
     this.loadProducts();
-    console.log(this.currentFilter);
+  
     
    
     
