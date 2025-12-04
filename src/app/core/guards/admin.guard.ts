@@ -20,13 +20,18 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   // 2. If we have a user signal, check if role is Admin
   // If user signal is null but token exists, allow temporary access (optimistic)
-  const isAdmin = user?.roles?.includes('Admin');
-  if (isAdmin) {
+  const roles = (user?.roles ?? []).map(r => r.toLowerCase());
+
+  const isAdmin =
+  roles.includes('admin') ||
+  user?.displayName?.toLowerCase().includes('admin'); // temporary fallback
+
+  if (isAdmin) 
+  {
     return true;
   }
-
   // 3. Not an admin
   snackBar.open('You are not authorized to access this page', 'Close', { duration: 3000 });
-  router.navigate(['/shopping']); // redirect to a safe page
+  router.navigate(['/account/login']); // redirect to login page
   return false;
 };
