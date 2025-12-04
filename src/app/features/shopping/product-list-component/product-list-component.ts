@@ -1,9 +1,10 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../core/services/product-service';
 import { Product, ProductFilter, Category, Brand } from '../../../core/models/Product.models';
 import { PageEvent } from '@angular/material/paginator';
+import { WishlistService } from '../../../core/services/wishlist-service';
 
 
 
@@ -15,6 +16,8 @@ import { PageEvent } from '@angular/material/paginator';
   
 })
 export class ProductListComponent implements OnInit {
+  private wishlistService = inject(WishlistService);
+  
   // Products data
   products: Product[] = [];
   categories: Category[] = [];
@@ -307,8 +310,9 @@ loadProducts(): void {
 
   // Add to wishlist (to be implemented)
   onAddToWishlist(product: Product): void {
-    console.log('Add to wishlist:', product);
+    console.log('Add to wishlist:', product.id);
     // TODO: Implement wishlist service
+    this.wishlistService.addToWishlist(product.id).subscribe();
   }
 
   // Get page title based on current filters
