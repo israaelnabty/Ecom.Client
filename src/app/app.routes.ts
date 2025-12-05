@@ -54,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'orders',
     loadChildren: () =>
-      import('./features/orders/orders-module').then(m => m.OrdersModule)
+      import('./features/orders/orders-routing-module').then(m => m.OrdersRoutingModule)
   },
   {
     path: '',
