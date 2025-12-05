@@ -42,7 +42,7 @@
 // product-card.component.ts - UPDATED
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router'; // ← ADD THIS IMPORT
-import { Product } from '../../../core/models/product.models';
+import { Product } from '../../../core/models/broduct.models';
 import { ProductService } from '../../../core/services/product-service';
 import { CartService } from '../../../core/services/cart-service';
 

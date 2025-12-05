@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Category } from '../../../core/models/product.models';
+import { Category } from '../../../core/models/broduct.models';
 
 
 @Component({

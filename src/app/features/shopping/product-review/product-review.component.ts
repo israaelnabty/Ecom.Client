@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
-import { ProductReviewCreate, ProductReviewUpdate, ProductReview } from '../../../core/models/product.models';
+import { ProductReviewCreate, ProductReviewUpdate, ProductReview } from '../../../core/models/broduct.models';
 import { ProductService } from '../../../core/services/product-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../core/services/auth-service';

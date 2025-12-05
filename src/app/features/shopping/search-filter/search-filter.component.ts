@@ -2,7 +2,7 @@
 // search-filter.component.ts - FIXED VERSION
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ProductFilter, Product } from '../../../core/models/product.models';
+import { ProductFilter, Product } from '../../../core/models/broduct.models';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../shared/material/material-module';
 

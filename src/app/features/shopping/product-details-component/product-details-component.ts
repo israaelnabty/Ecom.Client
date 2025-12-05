@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../core/services/product-service';
-import { Product } from '../../../core/models/product.models';
+import { Product } from '../../../core/models/broduct.models';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MaterialModule } from '../../../shared/material/material-module';
 import { CartService } from '../../../core/services/cart-service';

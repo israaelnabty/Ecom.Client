@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../core/services/product-service';
-import { Product, ProductFilter, Category, Brand } from '../../../core/models/product.models';
+import { Product, ProductFilter, Category, Brand } from '../../../core/models/broduct.models';
 import { PageEvent } from '@angular/material/paginator';
 import { SearchFilterComponent } from '../search-filter/search-filter.component';
 import { WishlistService } from '../../../core/services/wishlist-service';
