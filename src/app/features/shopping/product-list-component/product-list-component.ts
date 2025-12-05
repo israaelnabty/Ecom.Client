@@ -6,6 +6,8 @@ import { Product, ProductFilter, Category, Brand } from '../../../core/models/pr
 import { PageEvent } from '@angular/material/paginator';
 import { SearchFilterComponent } from '../search-filter/search-filter.component';
 import { WishlistService } from '../../../core/services/wishlist-service';
+import { ToastService} from '../../../core/services/toast.service';
+import { AuthService } from '../../../core/services/auth-service';
 
 
 @Component({
@@ -13,10 +15,11 @@ import { WishlistService } from '../../../core/services/wishlist-service';
   templateUrl: './product-list-component.html',
   styleUrls: ['./product-list-component.scss'], 
    standalone: false
-  
 })
 export class ProductListComponent implements OnInit {
+  private authService = inject(AuthService);
   private wishlistService = inject(WishlistService);
+  private toast = inject(ToastService);
   
     @ViewChild(SearchFilterComponent) searchFilterComponent!: SearchFilterComponent;
   // Products data
@@ -279,15 +282,35 @@ loadProducts(): void {
 
   // Add to cart (to be implemented)
   onAddToCart(product: Product): void {
+    console.log(this.authService.isAuthenticated());
+    if(!this.authService.isAuthenticated()) {
+      console.log('User not authenticated. Cannot add to cart.');
+      this.toast.warn('Please log in to add items to your cart!');
+      return;
+    }
+
     console.log('Add to cart:', product);
     // TODO: Implement cart service
   }
 
   // Add to wishlist (to be implemented)
   onAddToWishlist(product: Product): void {
+    console.log(this.authService.isAuthenticated());
+    if(!this.authService.isAuthenticated()) {
+      console.log('User not authenticated. Cannot add to wishlist.');
+      this.toast.warn('Please log in to add items to your wishlist!');
+      return;
+    }
+
     console.log('Add to wishlist:', product);
     // TODO: Implement wishlist service
-    this.wishlistService.addToWishlist(product.id).subscribe();
+    this.wishlistService.addToWishlist(product.id).subscribe({
+      next: (item) => {
+        if (item) this.toast.success('Item successfully added to wishlist!');
+        else this.toast.warn('Item already exists in wishlist!');
+      },
+      error: (err) => this.toast.error('Something went wrong')}
+    );
   }
 
   // Get page title based on current filters
