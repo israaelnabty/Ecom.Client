@@ -75,8 +75,11 @@ button.mat-mdc-icon-button {
 }
 
 /* --- TOAST CUSTOM STYLES --- */
+/* Using MDC variables for Material 3 compatibility */
+
 .toast-success {
   --mdc-snackbar-container-color: #4caf50;
+  --mdc-snackbar-supporting-text-color: #ffffff; /* Ensure white text */
   
   .mdc-snackbar__surface {
     border-left: 4px solid #2e7d32;
@@ -85,6 +88,7 @@ button.mat-mdc-icon-button {
 
 .toast-error {
   --mdc-snackbar-container-color: #f44336;
+  --mdc-snackbar-supporting-text-color: #ffffff;
   
   .mdc-snackbar__surface {
     border-left: 4px solid #c62828;
@@ -93,6 +97,7 @@ button.mat-mdc-icon-button {
 
 .toast-info {
   --mdc-snackbar-container-color: #2196f3;
+  --mdc-snackbar-supporting-text-color: #ffffff;
   
   .mdc-snackbar__surface {
     border-left: 4px solid #1565c0;
@@ -101,6 +106,7 @@ button.mat-mdc-icon-button {
 
 .toast-warn {
   --mdc-snackbar-container-color: #ff9800;
+  --mdc-snackbar-supporting-text-color: #ffffff;
   
   .mdc-snackbar__surface {
     border-left: 4px solid #e65100;

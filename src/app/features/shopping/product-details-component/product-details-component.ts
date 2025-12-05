@@ -4,6 +4,7 @@ import { ProductService } from '../../../core/services/product-service';
 import { Product } from '../../../core/models/product.models';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MaterialModule } from '../../../shared/material/material-module';
+import { CartService } from '../../../core/services/cart-service';
 import { WishlistService } from '../../../core/services/wishlist-service';
 import { ToastService } from '../../../core/services/toast.service';
 import { AuthService } from '../../../core/services/auth-service';
@@ -29,7 +30,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private router: Router
+    private router: Router, // ← ADD THIS
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -114,17 +116,11 @@ export class ProductDetailsComponent implements OnInit {
 
     if (!this.product) return;
     
-    // Get the product ID and quantity
-    const productId = this.product.id;
-    const quantity = this.quantity;
-    
-    // TODO: Implement cart service - use these parameters:
-    // cartService.addToCart(productId, quantity);
-    
-    console.log('Add to cart - Product ID:', productId, 'Quantity:', quantity);
-    
+    // TODO: Implement cart service
+    console.log('Add to cart:', this.product, 'Quantity:', this.quantity);
+    this.cartService.addToCart(this.product.id, this.quantity, this.getFinalPrice()).subscribe();
     // Show success message
-    alert(`Added ${quantity} ${this.product.title}(s) to cart!`);
+    alert(`Added ${this.quantity} ${this.product.title}(s) to cart!`);
   }
 
   // NEW: Add to wishlist with product ID parameter
