@@ -1,6 +1,44 @@
-# EcomClient
+# EcomClient (Angular 20)
+
+A modern, responsive **E-Commerce frontend client** built with **Angular 20**.  
+This project serves as the presentation layer for the [Ecom Backend API](https://github.com/YourUsername/Ecom-Backend), providing a seamless shopping experience with authentication, cart management, order tracking, and address selection via interactive maps.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+
+## 🚀 Features
+
+### 🛒 Core Functionality
+- Product browsing with categories and brands.
+- Shopping cart with persistent state.
+- Checkout flow integrated with backend orders.
+- Address management with **Leaflet + OpenStreetMap** (users can select delivery addresses directly on a map).
+
+### 🔐 Authentication
+- JWT Authentication with secure token storage.
+- Google OAuth 2.0 login.
+- Role-based UI (Admin vs Customer).
+
+### 📦 Order Management
+- Place and track orders in real time.
+- Display order history and statuses.
+- Integration with backend tracking numbers.
+
+### 🌍 Localization & Globalization
+- Multi-language support (English, Arabic).
+- Currency and date formatting based on locale.
+
+---
+
+## 🛠 Tech Stack
+- **Framework**: Angular 20
+- **UI**: Angular Material + Bootstrap
+- **Maps**: Leaflet + OpenStreetMap
+- **State Management**: Angular Signals / Services
+- **Testing**: Karma + Jasmine (unit tests), Cypress/Playwright (e2e optional)
+- **API Integration**: ASP.NET Core Web API backend
+
+---
+
 
 ## Development server
 
